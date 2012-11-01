@@ -1,0 +1,78 @@
+/*
+Entry point for the main application.
+*/
+
+package
+{
+	import flash.display.Sprite;
+
+	import Assets.Database;
+	import Assets.Assets;
+
+	import Database.Connection;
+
+	// Standard dimentions for the playbook.
+	[SWF(height='600', width='1024', frameRate='30', backgroundColor='#000000')]
+
+	public class fingerpuppets extends Sprite
+	{
+		// Local memory store for loaded assets.
+		private var assets:Assets = null;
+
+		// Stores the connection.
+		private var connection:Connection = null;
+
+		public function fingerpuppets()
+		{
+			trace('[fingerpuppets]', 'Hello World!');
+
+			// Create a new connection.
+			connection = new Connection();
+			connection.open('fingerpuppets.db');
+
+			// Recreate the objectDatabase.
+			var objectDatabase:Database = new Database();
+			objectDatabase.drop(connection);
+			objectDatabase.create(connection);
+
+			// Insert an image.
+			objectDatabase.insertAsset(connection,
+				'apple','image','assets/props/apple.png');
+			objectDatabase.insertAsset(connection,
+				'banana','image','assets/props/banana.png');
+			objectDatabase.insertAsset(connection,
+				'candle','image','assets/props/candle.png');
+			objectDatabase.insertAsset(connection,
+				'poison','image','assets/props/poison.png');
+
+			// Load the inserted assets.
+			assets = new Assets();
+			assets.load(connection,onLoad);
+		}
+
+		/*
+		Called when assets are loaded into the system.
+		*/
+		private function onLoad():void
+		{
+			trace('[fingerpuppets]', 'Assets loaded.');
+
+			// Try to access assets.
+			var sprite:Sprite = assets.getImage('apple');
+			this.addChild(sprite);
+			sprite.x = 400;
+			sprite.y = 200;
+			sprite.rotation = 45;
+
+			sprite = assets.getImage('banana');
+			this.addChild(sprite);
+			sprite.x = 300;
+			sprite.y = 500;
+			sprite.rotation = -45;
+			// Close the connection.
+
+			connection.close();
+		}
+	}
+}
+

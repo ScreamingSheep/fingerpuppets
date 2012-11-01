@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<application xmlns="http://ns.adobe.com/air/application/2.6">
+	<id>com.secondpremise.fingerpuppettheatre</id>
+	<name>Finger Puppet Theatre</name>
+	<filename>fingerpuppets</filename>
+	<versionNumber>1.0.0</versionNumber>
+	<initialWindow>
+		<content>fingerpuppets.swf</content>
+		<autoOrients>false</autoOrients>
+		<aspectRatio>landscape</aspectRatio>
+	</initialWindow>
+</application>

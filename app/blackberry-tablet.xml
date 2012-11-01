@@ -1,0 +1,12 @@
+<qnx>
+	<initialWindow>
+		<systemChrome>none</systemChrome>
+		<transparent>false</transparent>
+	</initialWindow>
+	<publisher>Second Premise</publisher>
+	<category>games</category>
+	<icon>
+		<image>assets/app/icon.png</image>
+	</icon>
+	<splashscreen>assets/app/splash.png</splashscreen>
+</qnx>

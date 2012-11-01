@@ -1,0 +1,26 @@
+package objects 
+{
+	import database.Connection;
+	import database.Schema;
+
+	/*
+	Inserts sprite data into the database.
+	*/
+	public class Assets
+	{
+		/*
+		Inserts all sprite data.
+		*/
+		public function insert():void
+		{
+		}
+
+		/*
+		Insert all prop data.
+		*/
+		public function insertProps():void
+		{
+		}
+	} //public class SpriteData
+} //package objects
+

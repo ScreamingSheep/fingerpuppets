@@ -1,0 +1,55 @@
+= Box 2D Notes =
+
+== Data ==
+
+ * world:
+  * A collection of the following.
+
+  * '''body:'''
+   * A chunk of matter.
+
+   * '''fixture:'''
+    * Material properties.
+
+   * '''shape:'''
+    * A geometric object.
+
+  * '''constraint:'''
+   * Limits the motion of bodies.
+
+   * '''joint:'''
+    * Holds two or more bodies together.
+
+   * '''joint limit:'''
+    * Limits the range of motion of a joint.
+
+   * '''joint motor:'''
+    * Drives the motion of a joint.
+
+== Modules ==
+
+ * '''common'''
+  * '''collision'''
+   * '''dynamics'''
+
+== Units ==
+
+ * Box2D is tuned for MKS units.
+ * Keep the size of moving objects between 0.1 and 10 meters.
+
+== Simulation ==
+
+ * A variable time step produces variable results.
+ * Don't tie the time step to your frame rate.
+
+ * There are two phases in the constraint solver:
+  * '''Velocity Phase:''' 
+   * The solver computes the impulses necessary for the bodies to move correctly.
+  * '''Position Phase:'''
+   * The solver adjusts the positions of the bodies to reduce overlap and joint detachment.
+
+ * The suggested iteration count for Box2D is 10 for both velocity and position.
+  * Using fewer iterations increases performance but accuracy suffers.
+  * Using more iterations decreases performance but improves the quality of your simulation.
+
+

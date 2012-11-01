@@ -1,0 +1,38 @@
+package objects
+{
+	import database.Connection;
+
+	/*
+	Used to manage the schema for the objects library.
+	*/
+	public class Schema
+	{
+		/*
+		Upgrades the database to the current revision.
+		*/
+		public function create(connection:Connection):void
+		{
+			trace('[objects]', 'Creating the database.');
+
+			// Create the assets table.
+			connection.execute('create table assets\
+				(\
+					id int primary key autoincrement,\
+					path varchar(256) not null\
+				)',[]);
+		}
+
+		/*
+		Drops a schema entirely. Useful for resetting if
+		something goes wrong.
+		*/
+		public function drop(connection:Connection):void
+		{
+			trace('[objects]', 'Dropping the database.');
+
+			// Drop the assets table.
+			connection.execute('drop table if exists assets',[]);
+		}
+	} //class Schema
+} //package objects
+
